@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 2849542420324857339}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.65, y: -2.28, z: 0}
+  m_LocalPosition: {x: -8.9632225, y: -1.4380469, z: 0}
   m_LocalScale: {x: 1.0203, y: 1.0305, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -282,12 +282,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.039239764}
-  m_Radius: 0.53923976
+  m_Offset: {x: 0, y: 0.0006957056}
+  m_Radius: 0.49930423
 --- !u!70 &5441255200239972106
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -322,8 +322,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.05032569}
-  m_Size: {x: 1, y: 1.1006514}
+  m_Offset: {x: 0, y: -0.0004063874}
+  m_Size: {x: 1, y: 1.0008126}
   m_Direction: 0
 --- !u!114 &8847123145463275007
 MonoBehaviour:
@@ -339,8 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   jumpForce: 10
-  spriteRenderer: {fileID: 1671994109535392696}
-  animator: {fileID: 2589251057472471510}
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!95 &2589251057472471510
 Animator:
   serializedVersion: 7
@@ -397,7 +397,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.007189393}
+  m_Offset: {x: -0.0000005364418, y: -0.04162939}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -407,7 +407,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1.0143788}
+  m_Size: {x: 0.5516683, y: 0.6699784}
   m_EdgeRadius: 0
 --- !u!1 &7118376184066493906
 GameObject:
