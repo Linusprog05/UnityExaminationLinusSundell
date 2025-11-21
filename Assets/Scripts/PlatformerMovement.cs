@@ -152,7 +152,7 @@ public class PlatformerMovement : MonoBehaviour
         if (controlEnabled)
         {
             moveInput = context.ReadValue<Vector2>().normalized;
-            bool isMoving = mathf.Abs(moveInput.x) > 0.01f || moveInput.x < -0.01f;
+            bool isMoving = Mathf.Abs(moveInput.x) > 0.01f || moveInput.x < -0.01f;
             animator.SetBool("isRunning", isMoving);
         }
         else
@@ -171,7 +171,7 @@ public class PlatformerMovement : MonoBehaviour
             Debug.Log("Jump!");
             jumpInput = true;
             jumpReleased = false;
-            bool isJumping = mathf.Abs(moveInput.Y) > 0.01f;
+            bool isJumping = Mathf.Abs(moveInput.y) > 0.01f;
             animator.SetBool("isJumping", isJumping);
         }
 
