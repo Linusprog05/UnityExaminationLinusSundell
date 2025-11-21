@@ -15,8 +15,7 @@ public class PlatformerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float jumpForce = 10f;
     // [SerializeField] private float gravityMultiplier = 1;    //unused
-    [SerializeField] private SpriteRenderer spriteRenderer ;
-    
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     public bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
     
@@ -31,9 +30,6 @@ public class PlatformerMovement : MonoBehaviour
     private bool jumpReleased;
     private bool wasGrounded;
     private bool isGrounded;
-    public PlayAudioCollision audioPlayer;
-    public AudioSource audiosource;
-    public AudioClip jumpClip;
 
     [SerializeField] private Animator animator;
     
@@ -53,8 +49,7 @@ public class PlatformerMovement : MonoBehaviour
     void Update()
     {
         velocity = TranslateInputToVelocity(moveInput);
-
-      
+        
         // Apply jump-input:
         if (jumpInput && wasGrounded)
         {
@@ -71,7 +66,6 @@ public class PlatformerMovement : MonoBehaviour
             }
             else
             {
-                audiosource.PlayOneShot(jumpClip);
                 // Has jumped. Play jump sound and/or trigger jump animation etc
             }
         }
@@ -82,13 +76,17 @@ public class PlatformerMovement : MonoBehaviour
             // Has landed, play landing sound and trigger landing animation
         }
         wasGrounded = isGrounded;
-
-        // Flip sprite according to direction (if a sprite renderer has been assigned)
         
-
+        // Flip sprite according to direction (if a sprite renderer has been assigned)
+        if (spriteRenderer)
+        {
+            if (moveInput.x > 0.01f)
+                spriteRenderer.flipX = false;
+            else if (moveInput.x < -0.01f)
+                spriteRenderer.flipX = true;
+        }
     }
 
-   
     private void FixedUpdate()
     {
         isGrounded = IsGrounded();
@@ -153,24 +151,11 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (controlEnabled)
         {
-            moveInput = context.ReadValue<Vector2>();
-            bool isMoving = Mathf.Abs(moveInput.x) > 0.01f || moveInput.x < -0.01f;
-            animator.SetBool("isRunning", isMoving);
-            if(moveInput.x > 0.01f)
-            {
-                spriteRenderer.flipX = false;
-            }
-            else if(moveInput.x < -0.01f)
-            {
-                spriteRenderer.flipX = true;
-            }
-                
-            
+            moveInput = context.ReadValue<Vector2>().normalized;
         }
         else
         {
             moveInput = Vector2.zero;
-            animator.SetBool("isRunning", false);
         }
     }
 
@@ -180,21 +165,15 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (context.started && controlEnabled)
         {
-            
             Debug.Log("Jump!");
             jumpInput = true;
             jumpReleased = false;
-            bool isJumping = Mathf.Abs(moveInput.y) > 0.01f;
-            animator.SetBool("isJumping", true);
-
         }
 
         if (context.canceled && controlEnabled)
         {
             jumpReleased = true;
             jumpInput = false;
-            animator.SetBool("isJumping", false);
-
         }
     }
 }
